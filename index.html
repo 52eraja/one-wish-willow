@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>情绪许愿柳 · One Wish Willow — 写下愿望、掰断柳枝、看它实现</title>
+<meta name="description" content="情绪许愿柳（One Wish Willow）复刻自电影《痴迷》的神秘道具：浏览器内的沉浸式 3D 许愿互动体验。写下愿望，掰断柳枝，看它如何按字面实现。中文界面，仅供娱乐。">
+<meta name="keywords" content="情绪许愿柳,One Wish Willow,许愿柳,OBSESSION,电影痴迷,3D互动,许愿,沉浸式体验,WebGL,浏览器游戏,影视道具,互动娱乐">
+<meta name="theme-color" content="#0b0705">
+<meta name="author" content="OBSESSION">
+<meta name="application-name" content="情绪许愿柳 · One Wish Willow">
+<meta name="generator" content="OBSESSION · EdgeOne Pages">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="googlebot" content="index,follow">
+<meta name="rating" content="general">
+<meta name="distribution" content="global">
+<meta name="copyright" content="© 2026 OBSESSION">
+<meta name="geo.region" content="CN">
+<meta name="geo.placename" content="Guangzhou">
+<meta name="ICBM" content="23.1291, 113.2644">
+<link rel="canonical" href="https://onewishwillow.bvip.one/">
+<link rel="alternate" hreflang="zh-CN" href="https://onewishwillow.bvip.one/">
+<link rel="alternate" hreflang="zh-Hans" href="https://onewishwillow.bvip.one/">
+<link rel="alternate" hreflang="x-default" href="https://onewishwillow.bvip.one/">
+<link rel="alternate" type="application/rss+xml" title="情绪许愿柳 · One Wish Willow" href="https://onewishwillow.bvip.one/sitemap.xml">
+
+<!-- Favicon（暗底金柳主题，跨平台多尺寸） -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="许愿柳">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="情绪许愿柳 · One Wish Willow">
+<meta property="og:title" content="情绪许愿柳 · One Wish Willow — 写下愿望、掰断柳枝、看它实现">
+<meta property="og:description" content="浏览器内的沉浸式 3D 许愿互动体验。复刻自电影《痴迷》的神秘道具：写下愿望、掰断柳枝、看它如何按字面实现。">
+<meta property="og:image" content="https://onewishwillow.bvip.one/assets/og-cover.png">
+<meta property="og:image:secure_url" content="https://onewishwillow.bvip.one/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="情绪许愿柳 · 一根金柳在暗色背景下垂落，左下角悬挂一枚红色许愿牌">
+<meta property="og:url" content="https://onewishwillow.bvip.one/">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@obsession_oww">
+<meta name="twitter:creator" content="@obsession_oww">
+<meta name="twitter:title" content="情绪许愿柳 · One Wish Willow">
+<meta name="twitter:description" content="复刻自电影《痴迷》的沉浸式 3D 许愿互动体验，写下愿望、掰断柳枝、看它实现。">
+<meta name="twitter:image" content="https://onewishwillow.bvip.one/assets/og-cover.png">
+<meta name="twitter:image:alt" content="情绪许愿柳 · 浏览器内 3D 许愿互动">
+
+<!-- GEO / Generative Engine Optimization：结构化数据喂 AI 搜索与传统搜索 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://onewishwillow.bvip.one/#org",
+      "name": "OBSESSION",
+      "alternateName": "OBSESSION Studio",
+      "url": "https://onewishwillow.bvip.one/",
+      "logo": "https://onewishwillow.bvip.one/assets/android-chrome-512.png",
+      "description": "复刻电影《痴迷》情绪许愿柳道具的互动娱乐创作团队。",
+      "foundingDate": "2026",
+      "founder": { "@type": "Person", "name": "Bruce / 布鲁斯" },
+      "areaServed": ["CN", "HK", "TW", "MO", "GLOBAL"],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "url": "https://onewishwillow.bvip.one/",
+        "contactType": "customer support",
+        "availableLanguage": ["Chinese", "English"]
+      }],
+      "sameAs": [
+        "https://onewishwillow.bvip.one/sitemap.xml"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://onewishwillow.bvip.one/#app",
+      "name": "情绪许愿柳 · One Wish Willow",
+      "alternateName": "One Wish Willow",
+      "url": "https://onewishwillow.bvip.one/",
+      "applicationCategory": "GameApplication",
+      "applicationSubCategory": "Interactive Entertainment",
+      "operatingSystem": "Any (modern web browser with WebGL)",
+      "browserRequirements": "Requires WebGL 2.0; Chrome 90+, Safari 14+, Firefox 88+, Edge 90+",
+      "inLanguage": "zh-CN",
+      "isAccessibleForFree": true,
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "单根许愿柳",
+          "price": "1.00",
+          "priceCurrency": "USD",
+          "url": "https://onewishwillow.bvip.one/?pay=single",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2026-08-31",
+          "description": "一次完整的许愿仪式，生成专属笔记卡片。"
+        },
+        {
+          "@type": "Offer",
+          "name": "不限量许愿柳",
+          "price": "6.99",
+          "priceCurrency": "USD",
+          "url": "https://onewishwillow.bvip.one/?pay=unlimited",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2026-08-31",
+          "description": "无限次许愿与发布，永久解锁全部结局。"
+        }
+      ],
+      "featureList": [
+        "浏览器内 3D 许愿互动（WebGL / Three.js）",
+        "复刻电影《痴迷》情绪许愿柳道具",
+        "写下愿望、掰断柳枝、看它实现",
+        "支持生成小红书风格笔记卡片",
+        "Stripe 安全支付（$1.00 / $6.99）",
+        "中英双语界面"
+      ],
+      "screenshot": "https://onewishwillow.bvip.one/assets/og-cover.png",
+      "softwareVersion": "1.0.0",
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "ratingCount": "1", "bestRating": "5" },
+      "publisher": { "@id": "https://onewishwillow.bvip.one/#org" },
+      "author": { "@id": "https://onewishwillow.bvip.one/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://onewishwillow.bvip.one/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "许愿柳是真的吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不是。它是电影《痴迷》中虚构道具的互动演绎，浏览器内 3D 实现，仅供娱乐，没有任何现实效力。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "需要下载或付费吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "打开网页即可游玩，无需下载。免费一次完整许愿；解锁更多许愿条数需购买：单根 $1.00，不限量 $6.99（由 Stripe 安全支付）。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支持哪些设备？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "任何支持 WebGL 2.0 的现代浏览器：Chrome / Safari / Edge / Firefox 最新版即可。手机、平板、桌面浏览器都能流畅运行，建议佩戴耳机。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支付后页面打不开怎么办？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "支付成功后会回到 https://onewishwillow.bvip.one/?paid=1&session_id=... ，系统会调用 Stripe 校验并自动解锁。如果几秒内未解锁，刷新一次页面即可。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://onewishwillow.bvip.one/#site",
+      "url": "https://onewishwillow.bvip.one/",
+      "name": "情绪许愿柳 · One Wish Willow",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://onewishwillow.bvip.one/#org" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://onewishwillow.bvip.one/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- 支付后端基址：留空=同源；部署后改为你的后端域名，前端只拿到 Stripe 回跳 URL，密钥仅存服务端 -->
+<meta name="oww-api" content="">
+<!-- 让 game.js 内部 credits 闸门失效：统一由 entitle.js 门控（免费一次，之后付费）。
+     必须在 game.js 读取 state 之前把 localStorage 中的 credits 设到极大值，使其 share-to-unlock 永不被触发。 -->
+<script>
+(function () {
+  try {
+    var k = 'obsession-willow-v1';
+    var s = JSON.parse(localStorage.getItem(k) || '{}');
+    if (typeof s.credits !== 'number' || s.credits < 9999) s.credits = 9999;
+    localStorage.setItem(k, JSON.stringify(s));
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="assets/share.css">
+<style>
+:root{
+  --ink:#efe5cd; --ink-dim:#c9b795; --ink-faint:rgba(233,220,190,.45);
+  --red:#c03625; --red-deep:#8f2318; --gold:#e6c87e; --taint:0;
+  --serif-en:'Playfair Display','Times New Roman',Georgia,serif;
+  --serif:'Noto Serif SC','Songti SC','SimSun',serif;
+  --logo:'Archivo Black','Arial Black',Impact,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  position:fixed;inset:0;width:100%;overflow:hidden;
+  background:#0b0705;color:var(--ink);font-family:var(--serif);
+  -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;
+  overscroll-behavior:none;touch-action:none;
+}
+button{font-family:inherit}
+
+#stage{position:fixed;inset:0;overflow:hidden;
+  background:radial-gradient(130% 105% at 50% 84%, #472b12 0%, #2b1a0b 30%, #190f07 58%, #0b0603 100%);}
+#scene{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+#scene.holding{cursor:grabbing}
+#floorGlow{position:absolute;left:0;right:0;bottom:0;height:52dvh;z-index:2;pointer-events:none;
+  background:radial-gradient(75% 85% at 50% 96%, rgba(133,82,34,.4) 0%, rgba(74,45,19,.16) 45%, rgba(0,0,0,0) 72%);}
+#dawn{position:absolute;inset:0;z-index:37;pointer-events:none;opacity:0;transition:opacity 3s ease;
+  background:radial-gradient(120% 100% at 50% 90%, #3a3a3c 0%, #1c1d20 45%, #0a0b0d 100%);}
+#stage.endB #dawn{opacity:.92}
+#vignette{position:absolute;inset:0;z-index:39;pointer-events:none;
+  background:radial-gradient(125% 115% at 50% 46%, rgba(0,0,0,0) 38%, rgba(0,0,0,.5) 76%, rgba(0,0,0,.92) 100%);}
+#stage.breaking #vignette{background:radial-gradient(125% 115% at 50% 46%, rgba(0,0,0,0) 26%, rgba(0,0,0,.62) 66%, rgba(0,0,0,.95) 100%)}
+#taint{position:absolute;inset:0;z-index:38;pointer-events:none;opacity:var(--taint);
+  background:radial-gradient(140% 120% at 50% 55%, rgba(0,0,0,0) 42%, rgba(120,20,10,.35) 82%, rgba(80,8,4,.6) 100%);
+  transition:opacity 2s ease;}
+#flick{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:0;background:#d8402a;mix-blend-mode:soft-light}
+#stage.flick #flick{opacity:.5}
+#blackout{position:absolute;inset:0;z-index:41;pointer-events:none;background:#030201;opacity:0;transition:opacity 2.4s ease}
+#stage.endA #blackout{opacity:.985}
+#grain{position:absolute;inset:-40px;z-index:42;pointer-events:none;opacity:.09;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+  animation:grain .6s steps(3) infinite;}
+@keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-14px,9px)}66%{transform:translate(11px,-13px)}100%{transform:translate(0,0)}}
+
+/* HUD */
+#hud{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+  padding:calc(12px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) 18px 0;pointer-events:none;}
+#brand{font-family:var(--serif-en);font-size:clamp(11px,1.4vw,14px);letter-spacing:.34em;color:var(--ink-dim);display:flex;align-items:center;gap:10px}
+#brand i{width:7px;height:7px;background:var(--red);transform:rotate(45deg);display:inline-block}
+.hud-btn{pointer-events:auto;background:rgba(20,12,6,.45);border:1px solid rgba(233,220,190,.4);color:var(--ink);
+  font-size:12px;letter-spacing:.28em;padding:8px 12px 8px 15px;cursor:pointer;backdrop-filter:blur(3px);
+  transition:background .3s,color .3s;}
+.hud-btn:hover{background:var(--ink);color:#221206}
+
+#wishChip{
+  position:absolute;top:calc(52px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));left:50%;transform:translateX(-50%);z-index:21;
+  display:none;align-items:center;gap:8px;max-width:82vw;
+  background:rgba(26,16,8,.85);border:1px solid rgba(233,220,190,.4);color:var(--ink);
+  font-size:12.5px;letter-spacing:.12em;padding:7px 14px;cursor:pointer;backdrop-filter:blur(3px);
+}
+#wishChip.show{display:flex}
+#wishChip .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-style:italic;color:#e8c9a0}
+#wishChip .e{opacity:.6;font-size:11px}
+
+#meters{position:absolute;left:18px;bottom:calc(16px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));z-index:20;width:clamp(120px,16vw,170px);pointer-events:none;transition:opacity .8s ease}
+.meter{margin-top:9px}
+.meter .lbl{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.3em;color:var(--ink-faint);margin-bottom:4px}
+.meter .bar{height:3px;background:rgba(233,220,190,.13)}
+.meter .fill{height:100%;width:0%;background:linear-gradient(90deg,#8f6a2e,var(--red));transition:width .9s ease}
+.meter.hot .lbl{color:rgba(224,120,90,.9)}
+
+#foot{position:absolute;right:18px;bottom:calc(14px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));z-index:20;text-align:right;pointer-events:none;max-width:62vw;transition:opacity .8s ease}
+#stage:not(.started) #meters, #stage:not(.started) #foot{opacity:0}
+#logo{font-family:var(--logo);font-size:clamp(20px,3.4vw,32px);letter-spacing:.02em;color:#f6f0e2;line-height:1;
+  text-shadow:-2px 0 rgba(255,40,70,.55),2px 0 rgba(60,200,255,.42),0 0 22px rgba(255,240,200,.32);
+  animation:logoFlick 7s infinite;}
+@keyframes logoFlick{
+  0%,91%,94.5%,100%{opacity:1;text-shadow:-2px 0 rgba(255,40,70,.55),2px 0 rgba(60,200,255,.42),0 0 22px rgba(255,240,200,.32)}
+  92%,94%{opacity:.7;text-shadow:-3px 1px rgba(255,40,70,.85),3px -1px rgba(60,200,255,.7),0 0 10px rgba(255,240,200,.2)}
+}
+#microprint{margin-top:6px;font-family:var(--serif-en);font-size:8px;letter-spacing:.06em;color:rgba(233,220,190,.4)}
+
+#breakHint{position:absolute;left:50%;bottom:calc(110px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));z-index:23;transform:translateX(-50%);
+  font-style:italic;font-size:15px;letter-spacing:.2em;color:var(--ink);text-shadow:0 0 12px rgba(0,0,0,.9);
+  pointer-events:none;display:none;animation:bendPulse 1.6s ease-in-out infinite;white-space:nowrap;text-align:center}
+#breakHint.show{display:block}
+@keyframes bendPulse{0%,100%{opacity:.55}50%{opacity:1}}
+#tension{position:absolute;left:50%;bottom:calc(92px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));z-index:23;transform:translateX(-50%);
+  width:min(300px,66vw);height:4px;background:rgba(233,220,190,.15);display:none}
+#tension.show{display:block}
+#tension .fill{height:100%;width:0%;background:linear-gradient(90deg,#8f6a2e,var(--red));transition:width .12s linear}
+#breakCancel{position:absolute;left:18px;bottom:calc(84px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));z-index:23;display:none}
+#breakCancel.show{display:inline-block}
+
+/* whisper */
+.whisper{position:absolute;z-index:22;pointer-events:none;font-style:italic;
+  font-size:clamp(14px,2vw,19px);letter-spacing:.14em;color:rgba(236,222,192,.8);
+  text-shadow:0 0 14px rgba(0,0,0,.9),0 0 4px rgba(0,0,0,.8);
+  opacity:0;transition:opacity 1.2s ease;white-space:nowrap;}
+.whisper.on{opacity:1}
+
+/* overlays */
+.overlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:55;padding:20px}
+.overlay.show{display:flex}
+.shade{position:absolute;inset:0;background:rgba(5,3,1,.45)}
+.card{position:relative;max-width:min(92vw,470px);width:100%;max-height:82dvh;overflow-y:auto;
+  background:linear-gradient(180deg, rgba(40,27,14,.97), rgba(24,15,8,.98));
+  border:1px solid rgba(233,220,190,.3);
+  box-shadow:0 34px 90px rgba(0,0,0,.75), inset 0 0 0 1px rgba(0,0,0,.5), inset 0 0 70px rgba(0,0,0,.45);
+  padding:clamp(22px,4vw,34px);}
+.card::before,.card::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--red)}
+.card::before{top:6px;left:6px;border-right:none;border-bottom:none}
+.card::after{bottom:6px;right:6px;border-left:none;border-top:none}
+.kicker{font-size:11px;letter-spacing:.42em;color:var(--red);margin-bottom:14px}
+.card h2{font-family:var(--serif);font-weight:600;font-size:clamp(19px,3vw,24px);letter-spacing:.12em;line-height:1.5;margin-bottom:14px}
+.card p{font-size:clamp(14px,2vw,15.5px);line-height:2.05;letter-spacing:.06em;color:var(--ink-dim)}
+.quote{font-style:italic;color:rgba(224,150,110,.9);font-size:14px;letter-spacing:.08em;margin-bottom:16px;line-height:1.9}
+.btn{display:inline-block;margin-top:22px;background:transparent;border:1px solid rgba(233,220,190,.55);color:var(--ink);
+  padding:.85em 1.9em;font-size:13px;letter-spacing:.4em;cursor:pointer;transition:background .35s,color .35s,border-color .35s;}
+.btn:hover{background:var(--ink);color:#241408;border-color:var(--ink)}
+.btn.red{border-color:rgba(220,90,60,.7);color:#e6a58e}
+.btn.red:hover{background:#a72f1d;color:#f7ecd8;border-color:#a72f1d}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+.type-body{min-height:5.2em}
+.cursor-blink::after{content:"▍";color:var(--gold);animation:blink 1s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+
+#wishInput{width:100%;background:rgba(0,0,0,.35);border:none;border-bottom:1px solid rgba(233,220,190,.45);
+  color:var(--ink);font-family:var(--serif);font-size:17px;letter-spacing:.08em;padding:12px 4px;outline:none;
+  -webkit-user-select:text;user-select:text;}
+#wishInput::placeholder{color:rgba(233,220,190,.35)}
+#wishErr{display:none;margin-top:14px;font-size:13px;line-height:1.9;letter-spacing:.08em;color:#e07a5a}
+#wishErr.show{display:block}
+#chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chip{background:transparent;border:1px solid rgba(233,220,190,.25);color:var(--ink-dim);
+  font-size:12.5px;letter-spacing:.1em;padding:7px 13px;cursor:pointer;transition:all .3s;}
+.chip:hover{border-color:var(--red);color:#e8b29a}
+
+/* intro —— 电影剧场版海报版式 */
+#intro{z-index:60;background:
+  linear-gradient(180deg, rgba(8,4,2,.93) 0%, rgba(14,8,4,.8) 38%, rgba(18,9,4,.34) 66%, rgba(0,0,0,0) 100%);}
+#introInner{position:relative;max-width:780px;width:100%;margin:0 auto;padding:0 26px;text-align:center;
+  padding-top:calc(7dvh + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));}
+#gameTitle{font-family:var(--serif);font-weight:900;color:#f3e9c9;
+  font-size:clamp(20px,3.6vw,34px);letter-spacing:.4em;text-indent:.4em;margin:0 0 1.6dvh;
+  text-shadow:0 0 20px rgba(255,200,120,.22);}
+#gameTitle i{font-style:normal;color:var(--red);font-size:.55em;vertical-align:middle;letter-spacing:0;text-indent:0}
+#intro h1.t1{font-family:var(--serif-en);font-weight:500;color:#ece1c8;
+  font-size:clamp(34px,6.4vw,72px);line-height:1.18;letter-spacing:.01em;margin:0;
+  text-shadow:0 2px 30px rgba(0,0,0,.55);}
+#intro h1.t1 .u{border-bottom:.045em solid #ece1c8;padding-bottom:.02em}
+#sideNote{font-family:var(--serif-en);font-size:clamp(13px,1.9vw,19px);line-height:1.75;
+  color:rgba(236,225,200,.92);text-align:right;max-width:380px;margin:3.4dvh 0 0 auto;}
+#beginBtn{margin-top:4.6dvh;font-size:13.5px}
+#introHint{margin-top:12px;font-size:10px;letter-spacing:.32em;color:rgba(233,220,190,.35)}
+#posterFoot{position:absolute;left:0;right:0;bottom:calc(2.2dvh + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+  display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:0 28px;pointer-events:none;}
+.pf-left{flex:1;display:flex;align-items:flex-end;gap:10px;font-family:var(--serif-en);font-style:italic;
+  font-size:9.5px;letter-spacing:.04em;line-height:1.6;color:rgba(233,220,190,.55);text-align:left}
+.pf-left .ratebox{flex:0 0 auto;width:21px;height:27px;border:1.5px solid rgba(233,220,190,.7);
+  color:#ece1c8;font-style:normal;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+
+#toast{position:absolute;left:50%;bottom:calc(88px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));z-index:45;transform:translate(-50%,8px);
+  background:rgba(26,16,8,.92);border:1px solid rgba(233,220,190,.35);color:var(--ink);
+  font-size:13px;letter-spacing:.14em;padding:10px 20px;opacity:0;transition:opacity .5s ease,transform .5s ease;
+  pointer-events:none;max-width:86vw;text-align:center;}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:480px){
+  .kicker{font-size:10px;letter-spacing:.32em}
+  .card h2{font-size:19px;line-height:1.45}
+  .card p{font-size:14.5px;line-height:1.92}
+  #breakHint{font-size:13px;letter-spacing:.12em;white-space:normal;width:86vw}
+  #introSub{letter-spacing:.28em}
+  #gameTitle{letter-spacing:.28em;text-indent:.28em}
+}
+@media (max-width:640px){
+  #meters{left:auto;right:12px;top:calc(58px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));bottom:auto;width:96px}
+  .meter{margin-top:7px}
+  .meter .lbl span:last-child{display:none}
+  .meter .lbl{justify-content:flex-start;letter-spacing:.4em;font-size:10px}
+  #foot{right:12px;bottom:calc(8px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)))}
+  #microprint{display:none}
+  #logo{font-size:19px}
+  #brand{letter-spacing:.2em;font-size:10px}
+  .hud-btn{padding:7px 8px 7px 11px;letter-spacing:.18em;font-size:11px}
+  #breakCancel{left:12px;bottom:calc(70px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)))}
+}
+@media (prefers-reduced-motion:reduce){ #grain,#logo{animation:none !important} }
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"情绪许愿柳 · One Wish Willow",
+  "alternateName":"One Wish Willow",
+  "url":"https://xu-yuan-liu-v08vtzkq.edgeone.cool/",
+  "logo":"https://xu-yuan-liu-v08vtzkq.edgeone.cool/assets/og-cover.png",
+  "description":"情绪许愿柳（One Wish Willow）是复刻自电影《痴迷》的沉浸式 3D 许愿互动体验。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"情绪许愿柳 · One Wish Willow",
+  "url":"https://xu-yuan-liu-v08vtzkq.edgeone.cool/",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"情绪许愿柳 · One Wish Willow — 沉浸式许愿互动体验",
+  "description":"写下愿望、掰断柳枝、看它实现。复刻自电影《痴迷》的沉浸式许愿互动体验，浏览器内即可游玩，仅供娱乐。",
+  "image":"https://xu-yuan-liu-v08vtzkq.edgeone.cool/assets/og-cover.png",
+  "datePublished":"2026-08-31",
+  "author":{"@type":"Organization","name":"OBSESSION"},
+  "publisher":{"@type":"Organization","name":"OBSESSION"},
+  "inLanguage":"zh-CN",
+  "mainEntityOfPage":"https://xu-yuan-liu-v08vtzkq.edgeone.cool/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"许愿柳是什么？","acceptedAnswer":{"@type":"Answer","text":"许愿柳（One Wish Willow）是复刻自电影《痴迷》的神秘道具的互动演绎：写下愿望、掰断柳枝，看它如何实现。一个浏览器内的沉浸式 3D 体验。"}},
+    {"@type":"Question","name":"许愿柳是真的吗？","acceptedAnswer":{"@type":"Answer","text":"不是。它是虚构电影道具的互动演绎，仅供娱乐，没有任何现实效力。"}},
+    {"@type":"Question","name":"需要下载或付费吗？","acceptedAnswer":{"@type":"Answer","text":"不需要下载，打开网页即可游玩。每位用户可免费许愿一次；之后解锁更多许愿需购买：单根 $1.00，不限量 $6.99（由 Stripe 安全支付）。"}},
+    {"@type":"Question","name":"支持哪些设备？","acceptedAnswer":{"@type":"Answer","text":"支持桌面与移动端浏览器，建议佩戴耳机以获得最佳沉浸氛围。"}},
+    {"@type":"Question","name":"可以分享给朋友吗？","acceptedAnswer":{"@type":"Answer","text":"可以。完成一次许愿后，通过卡片上的分享条把许愿柳分享到 X、Facebook、LinkedIn、微信、微博，或复制链接发送给好友。"}},
+    {"@type":"Question","name":"页面内容适合所有人吗？","acceptedAnswer":{"@type":"Answer","text":"本互动含轻微惊悚氛围与隐喻主题，标注为仅供娱乐；如感不适可随时关闭页面。"}}
+  ]
+}
+</script>
+</head>
+<body>
+<!-- 背景音乐：game.js 在 #beginBtn 点击（用户手势）时自动播放，#muteBtn 同时控制本音轨与音效；loop 循环 -->
+<audio id="bgm" loop preload="auto" src="./assets/Forever.mp3" aria-hidden="true"></audio>
+<div id="stage">
+  <canvas id="scene"></canvas>
+  <div id="floorGlow"></div>
+
+  <div id="vignette"></div>
+  <div id="taint"></div>
+  <div id="flick"></div>
+  <div id="dawn"></div>
+  <div id="blackout"></div>
+  <div id="grain"></div>
+
+  <header id="hud">
+    <div id="brand"><i></i>ONE WISH WILLOW · 情绪许愿柳</div>
+    <div style="display:flex;gap:10px">
+      <button class="hud-btn" id="langToggle" aria-label="切换语言">EN</button>
+      <button class="hud-btn" id="aboutBtn" aria-label="关于许愿柳" data-i18n="hud.about">关 于</button>
+      <button class="hud-btn" id="buyBtn" aria-label="购买许愿柳" data-i18n="hud.buy">购 买</button>
+      <button class="hud-btn" id="muteBtn" aria-label="切换声音" data-i18n="hud.mute">♪ 声音</button>
+    </div>
+  </header>
+
+  <div id="wishChip" role="button" aria-label="编辑当前愿望"><span class="k">愿望已记下 ·</span><span class="t"></span><span class="e">✎</span></div>
+
+  <div id="meters" aria-hidden="true">
+    <div class="meter" data-k="dep"><div class="lbl"><span>依赖</span><span>DEPENDENCY</span></div><div class="bar"><div class="fill"></div></div></div>
+    <div class="meter" data-k="att"><div class="lbl"><span>眷恋</span><span>ATTACHMENT</span></div><div class="bar"><div class="fill"></div></div></div>
+    <div class="meter" data-k="reg"><div class="lbl"><span>悔意</span><span>REGRET</span></div><div class="bar"><div class="fill"></div></div></div>
+  </div>
+
+      <div id="breakHint">按 住 柳 枝 不 放 ， 直 到 它 断 裂 …</div>
+  <div id="tension"><div class="fill"></div></div>
+  <button class="btn" id="breakCancel" style="margin-top:0;font-size:11px;padding:.6em 1.1em">放 下</button>
+
+  <footer id="foot">
+    <div id="logo">OBSESSION</div>
+    <div id="microprint">One Wish Willow will not be liable for any losses and/or damages in connection with wish-making.<br>Only in Theaters May 15th</div>
+  </footer>
+
+  <!-- INTRO · 剧场版海报 -->
+  <div class="overlay show" id="intro">
+    <div id="introInner">
+      <div id="gameTitle"><i>◆</i> 情绪许愿柳 <i>◆</i></div>
+      <h1 class="t1">Change your life<br>with just <span class="u">one wish</span>.</h1>
+      <div id="sideNote">Side effects may include:<br>Dependency. Attachment,<br>and Immediate Regret.</div>
+      <button class="btn" id="beginBtn" disabled>装 配 道 具 中 …</button>
+      <div id="introHint" data-i18n="intro.hint">点 击 或 拖 动 柳 条 许 愿 · 建 议 佩 戴 耳 机</div>
+    </div>
+    <div id="posterFoot">
+      <div class="pf-left"><span class="ratebox">R</span><span><i>One Wish Willow</i> will not be liable for any losses and/or damages in connection with wish-making.</span></div>
+    </div>
+  </div>
+
+  <!-- WISH INPUT -->
+  <div class="overlay" id="wishOverlay">
+    <div class="shade"></div>
+    <form class="card" id="wishCard">
+      <div class="kicker" data-i18n="wish.kicker">STEP 1 · MAKE A WISH</div>
+      <h2 data-i18n="wish.h2">握住柳枝之前，先把愿望写下来</h2>
+      <p style="margin-bottom:18px" data-i18n="wish.p">它在听。写清楚些——它只按字面实现。</p>
+      <input id="wishInput" autocomplete="off" data-i18n="wish.placeholder" placeholder="写下你最深的愿望，比如：让她回到我身边">
+      <div id="wishErr"></div>
+      <div id="chips"></div>
+      <div class="btn-row">
+        <button type="submit" class="btn red" id="wishSubmit" data-i18n="wish.submit">记 下 愿 望</button>
+        <button type="button" class="btn" id="wishCancel" data-i18n="wish.cancel">还 不 是 时 候</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- FRAGMENT -->
+  <div class="overlay" id="fragOverlay">
+    <div class="shade"></div>
+    <div class="card" id="fragCard">
+      <div class="kicker" id="fragKick">心愿 · I</div>
+      <div class="quote" id="fragWish"></div>
+      <p class="type-body" id="fragBody" style="user-select:text;-webkit-user-select:text"></p>
+      <button class="btn" id="fragNext" style="visibility:hidden" data-i18n="frag.next">继 续</button>
+    </div>
+  </div>
+
+  <!-- FINALE CHOICE -->
+  <div class="overlay" id="finalOverlay">
+    <div class="shade"></div>
+    <div class="card">
+      <div class="kicker" data-i18n="final.kick">最后一段柳条</div>
+      <h2 data-i18n="final.h2">它用你的声音说：“最后一次。”</h2>
+      <p data-i18n="final.p">桌上的柳条用完了。盒子的甜味变得像雨后的根，所有的孔洞都在发红。你听见极轻的一声——不是脆响，是它掰断了自己的声音。</p>
+      <div class="btn-row">
+        <button class="btn red" id="finalMore" data-i18n="final.more">再 许 一 次</button>
+        <button class="btn" id="finalLeave" data-i18n="final.leave">转 身 离 开</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENDING -->
+  <div class="overlay" id="endOverlay">
+    <div class="shade" style="background:rgba(2,1,0,.6)"></div>
+    <div class="card" id="endCard">
+      <div class="kicker" id="endTag">结局</div>
+      <h2 id="endTitle"></h2>
+      <p id="endBody"></p>
+      <div class="btn-row">
+        <button class="btn red" id="endRestart" data-i18n="end.restart">重 新 开 始</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE CARD -->
+  <div class="overlay" id="cardOverlay">
+    <div class="shade"></div>
+    <div class="card" style="text-align:center">
+      <div class="kicker" data-i18n="card.kicker">THE RITUAL · COMPLETE</div>
+      <h2 style="color:#d8442c;letter-spacing:.22em;text-indent:.22em" data-i18n="card.h2">柳 枝 已 断</h2>
+      <img id="cardImg" alt="许愿分享卡片" style="width:100%;max-width:330px;border:1px solid rgba(233,220,190,.35);display:block;margin:0 auto">
+      <div class="oww-share bottom" role="group" aria-label="分享到社交媒体">
+        <span class="lbl" data-i18n="share.label">分 享 / SHARE</span>
+        <button type="button" data-share="x" aria-label="分享到 X">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <span data-i18n="share.x">X</span>
+        </button>
+        <button type="button" data-share="facebook" aria-label="分享到 Facebook">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.018 1.792-4.685 4.533-4.685 1.313 0 2.686.235 2.686.235v2.96h-1.513c-1.49 0-1.955.93-1.955 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          <span data-i18n="share.facebook">Facebook</span>
+        </button>
+        <button type="button" data-share="linkedin" aria-label="分享到 LinkedIn">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          <span data-i18n="share.linkedin">LinkedIn</span>
+        </button>
+        <button type="button" data-share="wechat" aria-label="分享到微信">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M9 3C5.13 3 2 5.69 2 9.05c0 1.9 1.09 3.58 2.78 4.7L4 16l2.05-.95c.83.27 1.72.42 2.65.42.2 0 .4-.01.6-.03C8.9 14.6 8 13 8 11.2 8 7.84 10.86 5.1 14.3 5.1c.07 0 .14 0 .21.01C13.86 4.07 11.55 3 9 3zm-2.4 3.6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm4.8 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path d="M22 13.5c0-2.77-2.69-5.02-6-5.02s-6 2.25-6 5.02 2.69 5.02 6 5.02c.76 0 1.49-.12 2.16-.34L20 19l-.46-1.5c1.27-.86 2.46-2.13 2.46-4zM13.4 13.1a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4zm4.6 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z"/></svg>
+          <span data-i18n="share.wechat">微信</span>
+        </button>
+        <button type="button" data-share="weibo" aria-label="分享到微博">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5c-3.86 0-7 2.69-7 6 0 2.2 1.45 4.13 3.6 5.13-.25.7-.98 2.2-.98 2.2s2.3-.62 3.4-1.4c.6.12 1.23.18 1.98.18 3.86 0 7-2.69 7-6s-3.14-6-7-6zm-2.4 6.4a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2zm4.8 0a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0-3.2z"/></svg>
+          <span data-i18n="share.weibo">微博</span>
+        </button>
+        <button type="button" data-share="copy" aria-label="复制链接">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h4V7h-4a5 5 0 0 0 0 10h4v-1.9h-4A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8v2zm5-6v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10h-4z"/></svg>
+          <span data-i18n="share.copy">复 制</span>
+        </button>
+      </div>
+      <!-- game.js 必需：保留 postNoteBtn / shareFriendBtn 节点以免报错，视觉已交由 .oww-share 接管 -->
+      <button id="postNoteBtn" style="display:none" aria-hidden="true"></button>
+      <button id="shareFriendBtn" style="display:none" aria-hidden="true"></button>
+      <button class="btn" id="cardSkip" style="margin-top:14px;font-size:11px;padding:.6em 1.3em">收 下</button>
+      <p class="fine" style="margin-top:12px">每位用户可免费许愿一次 · 本互动内容仅供娱乐</p>
+    </div>
+  </div>
+
+  <!-- ABOUT · 关于许愿柳 (FAQ / GEO 内容) -->
+  <div class="overlay" id="aboutOverlay">
+    <div class="shade"></div>
+    <div class="card" id="aboutCard" style="max-width:min(94vw,660px);text-align:left">
+      <button type="button" class="oww-x" data-close="aboutOverlay" aria-label="关闭关于">关 闭 ✕</button>
+      <div class="oww-share top" role="group" aria-label="分享到社交媒体">
+        <span class="lbl" data-i18n="share.label">分 享 / SHARE</span>
+        <button type="button" data-share="x" aria-label="分享到 X">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <span data-i18n="share.x">X</span>
+        </button>
+        <button type="button" data-share="facebook" aria-label="分享到 Facebook">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.018 1.792-4.685 4.533-4.685 1.313 0 2.686.235 2.686.235v2.96h-1.513c-1.49 0-1.955.93-1.955 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          <span data-i18n="share.facebook">Facebook</span>
+        </button>
+        <button type="button" data-share="linkedin" aria-label="分享到 LinkedIn">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          <span data-i18n="share.linkedin">LinkedIn</span>
+        </button>
+        <button type="button" data-share="wechat" aria-label="分享到微信">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M9 3C5.13 3 2 5.69 2 9.05c0 1.9 1.09 3.58 2.78 4.7L4 16l2.05-.95c.83.27 1.72.42 2.65.42.2 0 .4-.01.6-.03C8.9 14.6 8 13 8 11.2 8 7.84 10.86 5.1 14.3 5.1c.07 0 .14 0 .21.01C13.86 4.07 11.55 3 9 3zm-2.4 3.6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm4.8 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path d="M22 13.5c0-2.77-2.69-5.02-6-5.02s-6 2.25-6 5.02 2.69 5.02 6 5.02c.76 0 1.49-.12 2.16-.34L20 19l-.46-1.5c1.27-.86 2.46-2.13 2.46-4zM13.4 13.1a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4zm4.6 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z"/></svg>
+          <span data-i18n="share.wechat">微信</span>
+        </button>
+        <button type="button" data-share="weibo" aria-label="分享到微博">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5c-3.86 0-7 2.69-7 6 0 2.2 1.45 4.13 3.6 5.13-.25.7-.98 2.2-.98 2.2s2.3-.62 3.4-1.4c.6.12 1.23.18 1.98.18 3.86 0 7-2.69 7-6s-3.14-6-7-6zm-2.4 6.4a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2zm4.8 0a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0-3.2z"/></svg>
+          <span data-i18n="share.weibo">微博</span>
+        </button>
+        <button type="button" data-share="copy" aria-label="复制链接">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h4V7h-4a5 5 0 0 0 0 10h4v-1.9h-4A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8v2zm5-6v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10h-4z"/></svg>
+          <span data-i18n="share.copy">复 制</span>
+        </button>
+      </div>
+      <h1 style="font-family:var(--serif);font-weight:900;font-size:clamp(20px,4vw,30px);letter-spacing:.1em;color:#f3e9c9;margin-bottom:12px" data-i18n="about.title">情绪许愿柳 · One Wish Willow</h1>
+      <p style="font-size:14px;line-height:2;color:var(--ink-dim);margin-bottom:16px" data-i18n="about.intro">复刻自电影《痴迷》的神秘道具：写下愿望、掰断柳枝、看它如何实现。一个浏览器内的沉浸式 3D 体验，仅供娱乐。</p>
+
+      <h2 style="font-size:15px;letter-spacing:.18em;color:var(--red);margin:18px 0 8px" data-i18n="about.whatTitle">它是什么？</h2>
+      <p style="font-size:13.5px;line-height:1.95;color:var(--ink-dim)" data-i18n="about.whatBody">许愿柳是一个互动仪式：在桌前写下愿望，按住柳枝直到它断裂，剧情随你的选择走向不同结局。它用 WebGL 实时渲染，打开网页即可游玩，无需下载安装。</p>
+
+      <h2 style="font-size:15px;letter-spacing:.18em;color:var(--red);margin:20px 0 10px" data-i18n="about.faqTitle">常见问题</h2>
+
+      <h3 style="font-size:14px;letter-spacing:.04em;color:#e8c9a0;margin:14px 0 4px" data-i18n="about.q.real">许愿柳是真的吗？</h3>
+      <p style="font-size:13.5px;line-height:1.95;color:var(--ink-dim)" data-i18n="about.a.real">不是。它是虚构电影道具的互动演绎，仅供娱乐，没有任何现实效力。</p>
+
+      <h3 style="font-size:14px;letter-spacing:.04em;color:#e8c9a0;margin:14px 0 4px" data-i18n="about.q.free">需要下载或付费吗？</h3>
+      <p style="font-size:13.5px;line-height:1.95;color:var(--ink-dim)" data-i18n="about.a.free">不需要下载，打开网页即可游玩；当前体验可直接进入，无需付费。</p>
+
+      <h3 style="font-size:14px;letter-spacing:.04em;color:#e8c9a0;margin:14px 0 4px" data-i18n="about.q.device">支持哪些设备？</h3>
+      <p style="font-size:13.5px;line-height:1.95;color:var(--ink-dim)" data-i18n="about.a.device">支持桌面与移动端浏览器，建议佩戴耳机以获得最佳沉浸氛围。</p>
+
+      <h3 style="font-size:14px;letter-spacing:.04em;color:#e8c9a0;margin:14px 0 4px" data-i18n="about.q.share">可以分享给朋友吗？</h3>
+      <p style="font-size:13.5px;line-height:1.95;color:var(--ink-dim)" data-i18n="about.a.share">可以。完成一次许愿后，通过页面顶部或结算卡片的一键分享，把许愿柳分享到 X、Facebook、LinkedIn、微信、微博，或复制链接。</p>
+
+      <h2 style="font-size:15px;letter-spacing:.18em;color:var(--red);margin:20px 0 10px" data-i18n="about.keyTitle">关键要点</h2>
+      <ul style="font-size:13.5px;line-height:1.95;color:var(--ink-dim);padding-left:20px">
+        <li data-i18n="about.k1">复刻自电影《痴迷》的神秘道具，沉浸式 3D 互动。</li>
+        <li data-i18n="about.k2">写下愿望 → 掰断柳枝 → 走向不同结局，流程可重复。</li>
+        <li data-i18n="about.k3">浏览器内直接运行，无需下载、无需安装。</li>
+        <li data-i18n="about.k4">一处分享，覆盖 X / Facebook / LinkedIn / 微信 / 微博 / 复制链接。</li>
+        <li data-i18n="about.k5">标注为虚构互动，仅供娱乐。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PAY · 支付入口 (Stripe) -->
+  <div class="overlay" id="payOverlay">
+    <div class="shade"></div>
+    <div class="card" style="text-align:center">
+      <button type="button" class="oww-x" data-close="payOverlay" aria-label="关闭支付">关 闭 ✕</button>
+      <div class="kicker" data-i18n="pay.kicker">UNLOCK · 许愿柳</div>
+      <h2 data-i18n="pay.title">解锁更多许愿</h2>
+      <p style="font-size:13px;color:var(--ink-dim);letter-spacing:.06em" data-i18n="pay.sub">一根许愿柳 $1.00，不限量 $6.99</p>
+      <div class="tiers">
+        <div class="tier sel" data-tier="single">
+          <div style="text-align:left">
+            <div class="nm" data-i18n="pay.t1.name">单根许愿柳</div>
+            <div class="ds" data-i18n="pay.t1.desc">一次完整的许愿仪式，生成专属笔记卡片。</div>
+          </div>
+          <div class="pr">US$1.00<small>单根</small></div>
+        </div>
+        <div class="tier" data-tier="unlimited">
+          <div style="text-align:left">
+            <div class="nm" data-i18n="pay.t2.name">不限量许愿柳</div>
+            <div class="ds" data-i18n="pay.t2.desc">无限次许愿与发布，永久解锁全部结局。</div>
+          </div>
+          <div class="pr">US$6.99<small>不限量</small></div>
+        </div>
+      </div>
+      <div class="btn-row" style="justify-content:center;flex-wrap:wrap;gap:12px">
+        <button type="button" class="btn red" data-tier-pay="single" style="min-width:200px;display:flex;align-items:center;justify-content:center;gap:10px">
+          <span data-i18n="pay.t1.name">单根许愿柳</span>
+          <span style="opacity:.85;font-size:13px">US$1.00</span>
+        </button>
+        <button type="button" class="btn red" data-tier-pay="unlimited" style="min-width:200px;display:flex;align-items:center;justify-content:center;gap:10px">
+          <span data-i18n="pay.t2.name">不限量许愿柳</span>
+          <span style="opacity:.85;font-size:13px">US$6.99</span>
+        </button>
+      </div>
+      <div class="pay-directs" style="font-size:12px;color:var(--ink-dim);margin-top:12px;line-height:1.7">
+        <span data-i18n="pay.directs.hint">分享 / 推广直链：</span>
+        <a href="?pay=single" data-copy-link="?pay=single" style="color:var(--gold);text-decoration:underline;cursor:pointer" data-i18n="pay.directs.single">单根 $1.00</a> ·
+        <a href="?pay=unlimited" data-copy-link="?pay=unlimited" style="color:var(--gold);text-decoration:underline;cursor:pointer" data-i18n="pay.directs.unlimited">不限量 $6.99</a>
+        <span id="payCopyTip" style="margin-left:6px;color:var(--red)"></span>
+      </div>
+      <div class="pay-secure">🔒 <span data-i18n="pay.secure">支付由 Stripe 安全加密处理</span></div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <div class="oww-wxqr" id="owwWxQr" aria-hidden="true">
+    <div class="shade"></div>
+    <div class="box">
+      <button type="button" class="x" data-close="owwWxQr" aria-label="关闭">关 闭 ✕</button>
+      <img id="owwWxQrImg" alt="微信扫码分享二维码" src="">
+      <p data-i18n="share.wechatHint">打开微信扫一扫，分享许愿柳</p>
+    </div>
+  </div>
+</div>
+
+<noscript style="position:fixed;inset:0;background:#120b06;color:#efe5cd;display:flex;align-items:center;justify-content:center;z-index:99">需要启用 JavaScript 才能许愿。</noscript>
+
+<script src="./assets/three.min.js"></script>
+<script src="./assets/stick_stl.js"></script>
+<script src="./assets/game.js"></script>
+<script src="./assets/i18n.js" defer></script>
+<script src="./assets/share.js" defer></script>
+<script src="./assets/entitle.js" defer></script>
+<script src="./assets/pay.js" defer></script>
+<script>
+/* 关于面板开关 + 语言切换 + 埋点（预留，密钥不出现在此处） */
+(function () {
+  var about = document.getElementById('aboutOverlay');
+  var btn = document.getElementById('aboutBtn');
+  if (btn && about) {
+    btn.addEventListener('click', function () { about.classList.add('show'); });
+  }
+  if (about) {
+    about.addEventListener('click', function (e) {
+      if (e.target.classList.contains('shade') || e.target.hasAttribute('data-close')) {
+        about.classList.remove('show');
+      }
+    });
+  }
+  var langToggle = document.getElementById('langToggle');
+  if (langToggle && window.OWW && window.OWW.i18n) {
+    langToggle.addEventListener('click', function () { window.OWW.i18n.toggle(); });
+  }
+  /* 埋点：自定义上报在此扩展（如 navigator.sendBeacon 到你的统计端点） */
+  window.__owwTrack = function (event, data) {
+    try {
+      if (window.navigator && navigator.sendBeacon && location.host) {
+        /* navigator.sendBeacon('/api/track?e=' + encodeURIComponent(event)); */
+      }
+    } catch (e) {}
+    if (window.console && console.debug) console.debug('[track]', event, data || '');
+  };
+})();
+</script>
+</body>
+</html>

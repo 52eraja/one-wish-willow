@@ -1,0 +1,55 @@
+/* 发布小红书模块 + 支付入口 + 语言切换 组件样式（复用 --ink/--red/--gold 变量） */
+
+/* 语言切换 / 购买 按钮沿用 .hud-btn，仅补充最小宽度 */
+#langToggle { min-width: 44px; text-align: center; }
+
+/* ---- 发布小红书模块 .oww-publish ---- */
+.oww-publish {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+  margin-top: 18px;
+}
+.oww-publish .lbl {
+  font-size: 10px; letter-spacing: .32em; color: rgba(233, 220, 190, .4);
+}
+.oww-publish button {
+  pointer-events: auto; display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(20, 12, 6, .5); border: 1px solid rgba(233, 220, 190, .35); color: var(--ink);
+  font-size: 12px; letter-spacing: .12em; padding: 8px 13px; cursor: pointer;
+  backdrop-filter: blur(3px); transition: background .3s, color .3s, border-color .3s;
+}
+.oww-publish button:hover { background: var(--ink); color: #221206; }
+.oww-publish button.xhs { border-color: rgba(255, 80, 80, .6); color: #ffb3a3; }
+.oww-publish button.xhs:hover { background: #ff2e4d; color: #fff; border-color: #ff2e4d; }
+.oww-publish svg.ic { width: 16px; height: 16px; fill: currentColor; }
+.oww-publish.top { justify-content: flex-start; margin: 0 0 18px; }
+
+@media (max-width: 480px) {
+  .oww-publish .lbl { display: none; }
+  .oww-publish button span:not(.keep) { display: none; }
+  .oww-publish button.xhs span { display: inline; }
+}
+
+/* ---- 支付入口 #payOverlay ---- */
+#payOverlay .tiers { display: flex; flex-direction: column; gap: 14px; margin: 18px 0 8px; }
+.tier {
+  border: 1px solid rgba(233, 220, 190, .3); padding: 15px 16px; display: flex;
+  justify-content: space-between; align-items: center; gap: 12px; cursor: pointer;
+  transition: border-color .3s, background .3s;
+}
+.tier:hover { border-color: rgba(233, 220, 190, .6); }
+.tier.sel { border-color: var(--red); background: rgba(192, 54, 37, .12); }
+.tier .nm { font-size: 15px; letter-spacing: .1em; color: #f3e9c9; }
+.tier .ds { font-size: 12px; color: var(--ink-dim); margin-top: 4px; line-height: 1.7; }
+.tier .pr { font-family: var(--serif-en); font-size: 22px; color: #e8c9a0; white-space: nowrap; }
+.tier .pr small { font-size: 11px; color: var(--ink-faint); display: block; text-align: right; letter-spacing: .1em; }
+.pay-secure {
+  font-size: 11px; letter-spacing: .12em; color: rgba(233, 220, 190, .55);
+  text-align: center; margin-top: 10px;
+}
+.pay-secure b { color: #9fd6a0; }
+.oww-x {
+  position: absolute; top: 10px; right: 12px; background: transparent;
+  border: 1px solid rgba(233, 220, 190, .4); color: var(--ink);
+  font-family: var(--serif-en); font-size: 11px; letter-spacing: .2em;
+  padding: 6px 12px; cursor: pointer;
+}

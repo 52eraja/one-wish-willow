@@ -1,0 +1,57 @@
+/* 社交媒体分享 .oww-share + 微信扫码弹窗（沿用 --ink/--red/--gold 调色板） */
+
+/* ---- 分享条 .oww-share ---- */
+.oww-share {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  justify-content: center; margin-top: 14px;
+}
+.oww-share .lbl {
+  font-size: 10px; letter-spacing: .32em; color: rgba(233,220,190,.4);
+  width: 100%; text-align: center; margin-bottom: 4px;
+}
+.oww-share button {
+  pointer-events: auto; display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(20,12,6,.5); border: 1px solid rgba(233,220,190,.35); color: var(--ink);
+  font-size: 12px; letter-spacing: .1em; padding: 7px 11px; cursor: pointer;
+  backdrop-filter: blur(3px); transition: background .3s, color .3s, border-color .3s;
+}
+.oww-share button:hover { background: var(--ink); color: #221206; }
+.oww-share svg.ic { width: 14px; height: 14px; fill: currentColor; display: inline-block; }
+.oww-share.top { justify-content: center; margin: 0 0 14px; }
+.oww-share.top .lbl { width: auto; margin: 0 6px 0 0; text-align: left; }
+.oww-share.bottom { justify-content: center; }
+
+@media (max-width: 480px) {
+  .oww-share .lbl { display: none; }
+  .oww-share button { padding: 8px 10px; }
+  .oww-share button span { display: none; }
+  .oww-share button[data-share="wechat"] span,
+  .oww-share button[data-share="weibo"] span { display: inline; }
+}
+
+/* ---- 微信扫码弹窗 #owwWxQr ---- */
+.oww-wxqr {
+  position: absolute; inset: 0; z-index: 70;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.oww-wxqr.show { display: flex; }
+.oww-wxqr .shade { position: absolute; inset: 0; background: rgba(5,3,1,.65); }
+.oww-wxqr .box {
+  position: relative; background: linear-gradient(180deg, rgba(40,27,14,.97), rgba(24,15,8,.98));
+  border: 1px solid rgba(233,220,190,.3);
+  padding: 26px 24px 22px; text-align: center; max-width: 320px; width: 100%;
+  box-shadow: 0 24px 70px rgba(0,0,0,.7);
+}
+.oww-wxqr .x {
+  position: absolute; top: 8px; right: 10px; background: transparent;
+  border: 1px solid rgba(233,220,190,.4); color: var(--ink);
+  font-size: 11px; letter-spacing: .2em; padding: 4px 10px; cursor: pointer;
+}
+.oww-wxqr img {
+  width: 220px; height: 220px; background: #fff; padding: 10px;
+  display: block; margin: 0 auto; border: 1px solid rgba(233,220,190,.2);
+}
+.oww-wxqr p {
+  margin-top: 14px; font-size: 13px; color: var(--ink-dim);
+  letter-spacing: .12em; line-height: 1.7;
+}

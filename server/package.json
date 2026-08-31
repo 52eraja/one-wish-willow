@@ -1,0 +1,13 @@
+{
+  "name": "one-wish-willow-pay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One Wish Willow — Stripe checkout backend (server-side keys only)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
