@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO / GEO 提交控制台 · 情绪许愿柳</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="情绪许愿柳站点的 SEO / GEO 体检与搜索引擎主动提交控制台。">
+<meta name="theme-color" content="#0b0705">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<style>
+:root{
+  --ink:#efe5cd; --ink-dim:#c9b795; --ink-faint:rgba(233,220,190,.5);
+  --red:#c03625; --gold:#e6c87e; --ok:#5fbf7a; --warn:#e0a33e;
+  --line:rgba(230,200,126,.18); --panel:rgba(255,255,255,.035);
+  --serif:'Noto Serif SC','Songti SC','SimSun',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;background:#0b0705;color:var(--ink);font-family:var(--serif);
+  padding:28px 18px 60px;line-height:1.6;
+  background-image:radial-gradient(120% 80% at 50% 0%, #241505 0%, #0b0705 62%);
+}
+.wrap{max-width:920px;margin:0 auto}
+header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px}
+h1{font-size:24px;letter-spacing:.04em;color:var(--gold);font-weight:600}
+.sub{color:var(--ink-dim);font-size:13px;margin-top:6px}
+.back{display:inline-block;margin-top:12px;color:var(--gold);font-size:13px;text-decoration:none;
+  border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+.back:hover{background:rgba(230,200,126,.08)}
+
+section{margin-bottom:32px}
+h2{font-size:16px;color:var(--gold);margin-bottom:14px;letter-spacing:.05em;
+   display:flex;align-items:center;gap:8px}
+h2::before{content:'';width:3px;height:15px;background:var(--red);display:inline-block}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+
+/* 体检清单 */
+.chk{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed rgba(230,200,126,.10);font-size:14px}
+.chk:last-child{border-bottom:none}
+.chk .ico{width:18px;flex:none;text-align:center;font-weight:700}
+.chk .nm{color:var(--ink);flex:none;min-width:190px}
+.chk .dt{color:var(--ink-faint);font-size:12.5px;word-break:break-all}
+.ok .ico{color:var(--ok)} .bad .ico{color:var(--red)} .warn .ico{color:var(--warn)}
+
+/* 控件 */
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+label{font-size:13px;color:var(--ink-dim);display:flex;align-items:center;gap:6px}
+select{background:#1a1008;color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:6px 10px;font-family:inherit;font-size:13px}
+input[type=checkbox]{accent-color:var(--gold);width:15px;height:15px}
+button{background:transparent;border:1px solid var(--line);color:var(--ink);
+  padding:8px 16px;border-radius:8px;font-family:inherit;font-size:13.5px;cursor:pointer;
+  transition:background .18s,border-color .18s}
+button:hover:not(:disabled){background:rgba(230,200,126,.10);border-color:var(--gold)}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.primary{background:var(--gold);color:#1a1008;border-color:var(--gold);font-weight:600}
+button.primary:hover:not(:disabled){background:#f0d492}
+button.danger{border-color:rgba(192,54,37,.5);color:#e8836f}
+button.danger:hover:not(:disabled){background:rgba(192,54,37,.15)}
+
+#status{font-size:13px;color:var(--ink-dim);min-height:22px;margin-bottom:12px}
+#status.busy{color:var(--gold)}
+
+/* 结果卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:6px}
+.card{background:var(--panel);border:1px solid var(--line);border-left-width:3px;border-radius:10px;padding:12px 14px}
+.card.ok{border-left-color:var(--ok)} .card.bad{border-left-color:var(--red)}
+.card.skip{border-left-color:var(--warn)}
+.card .t{font-size:14px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.card .m{font-size:12.5px;color:var(--ink-faint);margin-bottom:8px;word-break:break-word}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-dim)}
+.tag.s{border-color:rgba(95,191,122,.45);color:var(--ok)}
+.tag.f{border-color:rgba(192,54,37,.5);color:#e8836f}
+.tag.n{color:var(--ink-dim)}
+
+/* 历史 */
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid rgba(230,200,126,.10)}
+th{color:var(--gold);font-weight:600;font-size:12px}
+td.mono{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--ink-faint)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}
+.dot.s{background:var(--ok)} .dot.f{background:var(--red)}
+
+.note{font-size:12px;color:var(--ink-faint);margin-top:12px;line-height:1.7}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--ink-dim)}
+.empty{color:var(--ink-faint);font-size:13px;padding:8px 0}
+@media(max-width:560px){ .chk{flex-direction:column;gap:2px} .chk .nm{min-width:0} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>SEO / GEO 提交控制台</h1>
+    <div class="sub">情绪许愿柳 · One Wish Willow — 体检 + 主动推送到全球搜索引擎（含状态反馈与失败重试）</div>
+    <a class="back" href="/">← 返回站点首页</a>
+  </header>
+
+  <section>
+    <h2>SEO / GEO 体检</h2>
+    <div class="panel" id="healthList"><div class="empty">检查中…</div></div>
+    <div style="margin-top:12px"><button id="recheckBtn">重新检查</button></div>
+  </section>
+
+  <section>
+    <h2>主动提交到全球搜索引擎</h2>
+    <div class="panel">
+      <div class="controls">
+        <label>每引擎最多尝试
+          <select id="attempts">
+            <option value="1">1 次（不重试）</option>
+            <option value="2" selected>2 次（默认）</option>
+            <option value="3">3 次</option>
+            <option value="4">4 次</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="autoRetry" checked> 失败自动重试（指数退避，最多 3 轮）</label>
+        <button class="primary" id="submitBtn">开始提交</button>
+        <button id="retryBtn" disabled>重试失败项</button>
+      </div>
+      <div id="status">准备就绪。点击「开始提交」推送首页与两个付费深链。</div>
+      <div class="grid" id="results"></div>
+      <div class="note">
+        IndexNow 一次调用即分发给 <strong>Bing / Yandex / Seznam / Naver</strong>；Google、Bing、Yandex 另发 sitemap ping。
+        百度需后台配置 <code>BAIDU_TOKEN</code> 环境变量才会启用，未配置则自动跳过。<br>
+        ⚠️ 说明：Google 没有公开的 URL 推送 API，此处为传统 sitemap ping（尽力而为）；要确保 Google 收录，
+        请在 <strong>Search Console</strong> 验证站点并提交 sitemap。
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>提交历史（本地保存）</h2>
+    <div class="panel">
+      <div id="historyList"><div class="empty">暂无记录</div></div>
+      <div style="margin-top:12px"><button class="danger" id="clearBtn">清空历史</button></div>
+    </div>
+    <div class="note">
+      想做真正的定时自动提交？直接让外部 cron / 监控服务定时 GET 这个地址即可：<br>
+      <code>curl -s "https://onewishwillow.bvip.one/api/submit"</code>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var KEY = '7b36a53e013b6782f2fb902d2463f7ab';
+  var HIST = 'oww-seo-submit-history';
+  var MAX_ROUNDS = 3;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  };
+
+  function getText(u) {
+    return fetch(u, { cache: 'no-store' }).then(function (r) {
+      return r.ok ? r.text() : null;
+    }).catch(function () { return null; });
+  }
+  function getStatus(u) {
+    return fetch(u, { method: 'GET', cache: 'no-store' }).then(function (r) {
+      return r.status;
+    }).catch(function () { return 0; });
+  }
+
+  // ---------- 体检 ----------
+  var CHECKS = [
+    { name: 'robots.txt', run: function () {
+        return getText('/robots.txt').then(function (t) {
+          if (!t) return { ok: false, detail: '无法读取' };
+          var hasSitemap = /Sitemap:/i.test(t);
+          return { ok: hasSitemap, detail: hasSitemap ? '已声明 Sitemap' : '缺少 Sitemap 声明' };
+        });
+      } },
+    { name: 'sitemap.xml', run: function () {
+        return getText('/sitemap.xml').then(function (t) {
+          if (!t) return { ok: false, detail: '无法读取' };
+          var n = (t.match(/<loc>/g) || []).length;
+          return { ok: n > 0, detail: n > 0 ? '含 ' + n + ' 个 URL' : '未解析到 URL' };
+        });
+      } },
+    { name: 'llms.txt（GEO · AI 摘要）', run: function () {
+        return getText('/llms.txt').then(function (t) {
+          return { ok: !!t && t.length > 100, detail: t ? t.length + ' 字节，可供 AI 引擎读取' : '缺失' };
+        });
+      } },
+    { name: 'IndexNow 密钥文件', run: function () {
+        return getText('/' + KEY + '.txt').then(function (t) {
+          var ok = !!t && t.trim() === KEY;
+          return { ok: ok, detail: ok ? '/' + KEY + '.txt 内容匹配' : '密钥文件缺失或不匹配' };
+        });
+      } },
+    { name: 'JSON-LD 结构化数据', run: function () {
+        return getText('/').then(function (t) {
+          if (!t) return { ok: false, detail: '首页不可读' };
+          var n = (t.match(/application\/ld\+json/g) || []).length;
+          return { ok: n > 0, detail: n + ' 段 @graph（Organization/WebApp/FAQ/WebSite/Breadcrumb）' };
+        });
+      } },
+    { name: 'canonical 规范链接', run: function () {
+        return getText('/').then(function (t) {
+          var ok = !!t && /rel="canonical"/.test(t);
+          return { ok: ok, detail: ok ? '已设置' : '缺失' };
+        });
+      } },
+    { name: 'Open Graph 封面图', run: function () {
+        return getStatus('/assets/og-cover.png').then(function (s) {
+          return { ok: s === 200, detail: 'og-cover.png → HTTP ' + s };
+        });
+      } },
+    { name: 'Favicon / 站点图标', run: function () {
+        return getStatus('/assets/favicon.ico').then(function (s) {
+          return { ok: s === 200, detail: 'favicon.ico → HTTP ' + s };
+        });
+      } },
+    { name: 'PWA manifest', run: function () {
+        return getStatus('/assets/manifest.webmanifest').then(function (s) {
+          return { ok: s === 200, detail: 'manifest.webmanifest → HTTP ' + s };
+        });
+      } },
+    { name: 'AI 爬虫放行（GEO）', run: function () {
+        return getText('/robots.txt').then(function (t) {
+          if (!t) return { ok: false, detail: '无法读取 robots.txt' };
+          var bots = ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended'];
+          var missing = bots.filter(function (b) { return t.indexOf(b) < 0; });
+          return { ok: missing.length === 0, detail: missing.length ? '未放行：' + missing.join('、') : 'GPTBot / ClaudeBot / PerplexityBot / Google-Extended 全部放行' };
+        });
+      } }
+  ];
+
+  function renderHealth(items) {
+    var html = items.map(function (it) {
+      var cls = it.ok ? 'ok' : (it.warn ? 'warn' : 'bad');
+      var ico = it.ok ? '✓' : (it.warn ? '!' : '✕');
+      return '<div class="chk ' + cls + '">' +
+        '<span class="ico">' + ico + '</span>' +
+        '<span class="nm">' + esc(it.name) + '</span>' +
+        '<span class="dt">' + esc(it.detail) + '</span></div>';
+    }).join('');
+    $('healthList').innerHTML = html;
+  }
+
+  function runHealth() {
+    $('healthList').innerHTML = '<div class="empty">检查中…</div>';
+    return Promise.all(CHECKS.map(function (c) {
+      return c.run().then(function (r) {
+        return { name: c.name, ok: !!r.ok, warn: !!r.warn, detail: r.detail || '' };
+      }).catch(function (e) {
+        return { name: c.name, ok: false, detail: '检查失败：' + (e && e.message ? e.message : e) };
+      });
+    })).then(renderHealth);
+  }
+
+  // ---------- 提交 ----------
+  var busy = false;
+  var lastFailed = [];
+
+  function setStatus(txt, busyState) {
+    $('status').textContent = txt;
+    $('status').className = busyState ? 'busy' : '';
+  }
+
+  function callSubmit(engines, attempts) {
+    var u = new URL('/api/submit', location.origin);
+    u.searchParams.set('attempts', String(attempts));
+    if (engines && engines.length) u.searchParams.set('engines', engines.join(','));
+    return fetch(u.toString(), { method: 'GET', cache: 'no-store' }).then(function (r) {
+      return r.json();
+    });
+  }
+
+  function renderResults(data) {
+    if (!data || !data.results) {
+      $('results').innerHTML = '<div class="card bad"><div class="t">提交失败</div>' +
+        '<div class="m">' + esc((data && (data.error || data.hint)) || '无法连接 /api/submit') + '</div></div>';
+      return;
+    }
+    var html = data.results.map(function (r) {
+      var cls = r.skipped ? 'skip' : (r.ok ? 'ok' : 'bad');
+      var state = r.skipped ? '已跳过' : (r.ok ? '成功' : '失败');
+      return '<div class="card ' + cls + '">' +
+        '<div class="t">' + esc(r.label) + '</div>' +
+        '<div class="m">' + esc(r.message || '') + '</div>' +
+        '<div class="tags">' +
+          '<span class="tag ' + (r.ok ? 's' : (r.skipped ? 'n' : 'f')) + '">' + state + '</span>' +
+          '<span class="tag">HTTP ' + r.status + '</span>' +
+          '<span class="tag">尝试 ' + r.attempts + ' 次</span>' +
+          '<span class="tag">' + r.ms + ' ms</span>' +
+        '</div></div>';
+    }).join('');
+    $('results').innerHTML = html;
+  }
+
+  function appendHistory(data) {
+    if (!data || !data.results) return;
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem(HIST) || '[]'); } catch (e) { list = []; }
+    data.results.forEach(function (r) {
+      list.unshift({ ts: data.ts || new Date().toISOString(), label: r.label, ok: r.ok, skipped: r.skipped, status: r.status, attempts: r.attempts, message: r.message || '' });
+    });
+    list = list.slice(0, 100);
+    try { localStorage.setItem(HIST, JSON.stringify(list)); } catch (e) {}
+    renderHistory();
+  }
+
+  function renderHistory() {
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem(HIST) || '[]'); } catch (e) { list = []; }
+    if (!list.length) { $('historyList').innerHTML = '<div class="empty">暂无记录</div>'; return; }
+    var rows = list.map(function (h) {
+      var d = new Date(h.ts);
+      var dot = h.skipped ? 'n' : (h.ok ? 's' : 'f');
+      return '<tr><td class="mono">' + d.toLocaleString('zh-CN') + '</td>' +
+        '<td><span class="dot ' + dot + '"></span>' + esc(h.label) + '</td>' +
+        '<td class="mono">HTTP ' + h.status + '</td>' +
+        '<td class="mono">' + h.attempts + '</td>' +
+        '<td class="mono">' + esc(h.message) + '</td></tr>';
+    }).join('');
+    $('historyList').innerHTML =
+      '<table><thead><tr><th>时间</th><th>引擎</th><th>状态</th><th>尝试</th><th>说明</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody></table>';
+  }
+
+  function setBusy(b) {
+    busy = b;
+    $('submitBtn').disabled = b;
+    $('recheckBtn').disabled = b;
+    $('retryBtn').disabled = b || !lastFailed.length;
+    $('submitBtn').textContent = b ? '提交中…' : '开始提交';
+  }
+
+  // 递归：提交 → 若仍有失败且开启自动重试，则指数退避后只重跑失败项
+  function runRounds(engines, attempts, round) {
+    setStatus('第 ' + round + ' 轮提交中…（引擎：' + (engines && engines.length ? engines.join(', ') : '全部') + '）', true);
+    return callSubmit(engines, attempts).then(function (data) {
+      renderResults(data);
+      appendHistory(data);
+      var failed = (data && data.failedEngines) || [];
+      lastFailed = failed;
+      var auto = $('autoRetry').checked;
+
+      if (failed.length && auto && round < MAX_ROUNDS) {
+        var wait = 1500 * Math.pow(2, round - 1);
+        setStatus(failed.length + ' 个引擎失败（' + failed.join(', ') + '），' + (wait / 1000) + 's 后自动重试 → 第 ' + (round + 1) + ' 轮', true);
+        return new Promise(function (r) { setTimeout(r, wait); }).then(function () {
+          return runRounds(failed, attempts, round + 1);
+        });
+      }
+
+      if (!data || !data.results) { setStatus('提交失败：' + ((data && (data.error || data.hint)) || '未知错误')); return; }
+      var s = data.summary || {};
+      if (!failed.length) {
+        setStatus('✅ 全部完成：' + s.success + ' 成功 / ' + (s.skipped || 0) + ' 跳过（共 ' + s.total + ' 个引擎，' + data.urlCount + ' 个 URL）');
+      } else {
+        setStatus('⚠️ 完成但仍有 ' + failed.length + ' 个引擎失败：' + failed.join(', ') + '（可点「重试失败项」再试）');
+      }
+      setBusy(false);
+    }).catch(function (e) {
+      setStatus('提交异常：' + (e && e.message ? e.message : e));
+      $('results').innerHTML = '<div class="card bad"><div class="t">请求失败</div><div class="m">' + esc(String(e && e.message ? e.message : e)) + '</div></div>';
+      setBusy(false);
+    });
+  }
+
+  function doSubmit(engines) {
+    if (busy) return;
+    setBusy(true);
+    $('results').innerHTML = '';
+    runRounds(engines || [], parseInt($('attempts').value, 10) || 2, 1);
+  }
+
+  $('submitBtn').onclick = function () { doSubmit([]); };
+  $('retryBtn').onclick = function () { if (lastFailed.length) doSubmit(lastFailed); };
+  $('recheckBtn').onclick = runHealth;
+  $('clearBtn').onclick = function () {
+    try { localStorage.removeItem(HIST); } catch (e) {}
+    renderHistory();
+  };
+
+  // 初始化
+  renderHistory();
+  runHealth();
+  // ?auto=1 → 打开页面即自动提交一次（便于外部定时服务触发）
+  if (new URLSearchParams(location.search).get('auto') === '1') doSubmit([]);
+})();
+</script>
+</body>
+</html>

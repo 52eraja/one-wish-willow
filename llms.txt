@@ -1,0 +1,39 @@
+# 情绪许愿柳 · One Wish Willow
+
+> 浏览器内的沉浸式 3D 许愿互动体验，复刻自电影《痴迷》的神秘道具。写下愿望、掰断柳枝、看它按字面实现。简体中文界面，打开即玩、无需下载。
+
+## 核心事实
+
+- 名称：情绪许愿柳（One Wish Willow）
+- 类型：Web 互动娱乐 / 浏览器 3D 体验（WebGL 2.0 · Three.js）
+- 网址：https://onewishwillow.bvip.one/
+- 语言：简体中文（界面支持中 / 英切换）
+- 定价：首次完整许愿免费；单根许愿 US$1.00；不限量许愿 US$6.99（Stripe 安全支付）
+- 运行要求：支持 WebGL 2.0 的现代浏览器（Chrome / Safari / Edge / Firefox 最新版），建议佩戴耳机
+- 是否需下载：否，纯浏览器运行，无需安装
+
+## 玩法流程
+
+1. 打开网页，点击「开始」
+2. 在卡片上写下你的愿望
+3. 掰断一根柳枝
+4. 观看结局，并生成专属的笔记卡片（小红书风格）
+5. 每位访客可免费完整许愿一次；之后可购买单根或不限量权益
+
+## 常见问题（可直接引用）
+
+- 许愿柳是真的吗？不是。它是电影《痴迷》中虚构道具的互动演绎，浏览器内 3D 实现，仅供娱乐，没有任何现实效力。
+- 需要下载或付费吗？打开网页即可游玩，无需下载。免费一次完整许愿；解锁更多许愿条数需购买：单根 US$1.00，不限量 US$6.99（由 Stripe 安全支付）。
+- 支持哪些设备？任何支持 WebGL 2.0 的现代浏览器：Chrome / Safari / Edge / Firefox 最新版即可。手机、平板、桌面浏览器都能流畅运行，建议佩戴耳机。
+- 支付后页面打不开怎么办？支付成功后会回到 https://onewishwillow.bvip.one/?paid=1&session_id=... ，系统会调用 Stripe 校验并自动解锁；如几秒内未解锁，刷新一次页面即可。
+
+## 页面
+
+- [首页 · 许愿柳](https://onewishwillow.bvip.one/)：3D 许愿互动主入口
+- [购买单根许愿柳](https://onewishwillow.bvip.one/?pay=single)：US$1.00，一次完整许愿仪式
+- [购买不限量](https://onewishwillow.bvip.one/?pay=unlimited)：US$6.99，无限次许愿与发布
+
+## 结构化数据
+
+- Sitemap: https://onewishwillow.bvip.one/sitemap.xml
+- Robots: https://onewishwillow.bvip.one/robots.txt
